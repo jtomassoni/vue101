@@ -3,6 +3,7 @@
     <h1>{{ title }}</h1>
   </header>
   <ButtonNew
+    v-show="homePage"
     @btn-click="$emit('toggle-add-task')"
     :text="showAddTask ? 'Close' : 'Add Task'"
     :color="showAddTask ? 'red' : 'green'" />
@@ -24,6 +25,15 @@ export default {
   },
   components: {
     ButtonNew
+  },
+  computed: {
+    homePage() {
+      if(this.$route.path === '/'){
+        return true
+      } else {
+        return false
+      }
+    }
   },
   emits: ['toggle-add-task']
   }
